@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import FormA11y from './components/FormA11y/';
+import { F1yForm, F1yBasicField } from './components/FormA11y/';
 
 class App extends Component {
 
-  handleFormSubmit(e) {
-    e.preventDefault();
-  }
-
   render() {
+
+    const handleDefaultFunc = e => e.preventDefault();
+
     return (
       <div className="App">
-        <FormA11y
-          handleSubmit={this.handleFormSubmit}
+        <h1>FormA11y -- Accessible, Styleable Form Components</h1>
+        <F1yForm
+          submit={handleDefaultFunc}
         >
-
-        </FormA11y>
+          <F1yBasicField 
+            id="fname"
+            label="First Name"
+          />
+        </F1yForm>
       </div>
     );
   }

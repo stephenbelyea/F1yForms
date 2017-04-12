@@ -1,1 +1,1 @@
-# FormA11y -- Accessible Form Components #
+# FormA11y -- Accessible, Stylable Form Components #
