@@ -6,7 +6,7 @@ const defaultStr = '';
 const defaultFunc = () => null
 const defaultRequired = (field, prop) => {
   console.error(`${field} requires '${prop}' prop!`);
-  return '';
+  return defaultStr;
 }
 
 const describedBy = (id, desc, err) => {
