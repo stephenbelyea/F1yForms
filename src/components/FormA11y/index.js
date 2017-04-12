@@ -2,20 +2,25 @@ import React from 'react';
 import './forma11y.css';
 
 
+const defaultStr = '';
 const defaultFunc = () => null
+const defaultRequired = (field, prop) => {
+  console.error(`${field} requires '${prop}' prop!`);
+  return '';
+}
 
 const describedBy = (id, desc, err) => {
-  let describedby = '';
-  if (err !== '' && desc !== '') {
+  let describedby = defaultStr;
+  if (err !== defaultStr && desc !== defaultStr) {
     describedby = `${id}_err ${id}_desc`;
   }
-  else if (err !== '') describedby = `${id}_err`;
-  else if (desc !== '') describedby = `${id}_desc`;
+  else if (err !== defaultStr) describedby = `${id}_err`;
+  else if (desc !== defaultStr) describedby = `${id}_desc`;
   return describedby;
 }
 
 const showDescription = (id, text, type = 'desc') => {
-  if (text === '') return null;
+  if (text === defaultStr) return null;
   return (
     <span 
       id={`${id}_${type}`} 
@@ -41,29 +46,23 @@ const F1yForm = ({
 
 
 const F1yBasicField = ({
+  label = defaultRequired('F1yBasicField', 'label'),
+  id = defaultRequired('F1yBasicField', 'id'),
   change = defaultFunc,
   focus = defaultFunc,
   blur = defaultFunc,
-  type = 'text',
-  value = '',
-  label = '', // *Required
-  description = '',
-  error = '',
-  id = '' // *Required
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  type = 'text'
 }) => (
   <div className="f1y-basic-field">
-    <label 
-      htmlFor={id}
-    >
-      {label}
-    </label>
+    <label htmlFor={id}>{label}</label>
     <input 
       id={id}
       type={type}
       value={value}
-      aria-describedby={
-        describedBy(id, description, error)
-      }
+      aria-describedby={describedBy(id, description, error)}
       onChange={change}
       onFocus={focus}
       onBlur={blur}
