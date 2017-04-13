@@ -3,6 +3,7 @@ Accessible, styleable Form and field React components
 
 ## Components ##
 
+
 ### F1yForm ###
 Top-level component. Wrap your fields in this fella.
 
@@ -13,6 +14,19 @@ Top-level component. Wrap your fields in this fella.
  ...
 </F1yForm>
 ```
+
+
+### F1yFieldset ###
+Wrap sets of dependant fields (checkboxes, radios) in the fieldset to keep options contextually related.
+
+```
+<F1yFieldset 
+  legend={str = ''}
+>
+ ...
+</F1yFieldset>
+```
+
 
 ### F1yBasicField ###
 The main go-to field for text, email, number, and other general single-line inputs. 

@@ -51,9 +51,11 @@ const F1yFieldset = ({
   children
 }) => (
   <fieldset className="f1y-fieldset">
-    <legend className="f1y-fieldset__legend">
-      {legend}
-    </legend>
+    {legend !== '' &&
+      <legend className="f1y-fieldset__legend">
+        {legend}
+      </legend>
+    }
     {children}
   </fieldset>
 )
