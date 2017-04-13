@@ -1,26 +1,27 @@
-import React from 'react';
-import './f1yforms.css';
+import React from 'react'
+import './f1yforms.css'
 
 
-const defaultStr = '';
+const defaultStr = ''
 const defaultFunc = () => null
 const defaultRequired = (field, prop) => {
-  console.error(`${field} requires '${prop}' prop!`);
-  return defaultStr;
+  console.error(`${field} requires '${prop}' prop!`)
+  return defaultStr
 }
+const defaultFieldType = 'text'
 
 const describedBy = (id, desc, err) => {
-  let describedby = defaultStr;
+  let describedby = defaultStr
   if (err !== defaultStr && desc !== defaultStr) {
-    describedby = `${id}_err ${id}_desc`;
+    describedby = `${id}_err ${id}_desc`
   }
-  else if (err !== defaultStr) describedby = `${id}_err`;
-  else if (desc !== defaultStr) describedby = `${id}_desc`;
-  return describedby;
+  else if (err !== defaultStr) describedby = `${id}_err`
+  else if (desc !== defaultStr) describedby = `${id}_desc`
+  return describedby
 }
 
 const showDescription = (id, text, type = 'desc') => {
-  if (text === defaultStr) return null;
+  if (text === defaultStr) return null
   return (
     <span 
       id={`${id}_${type}`} 
@@ -45,6 +46,19 @@ const F1yForm = ({
 )
 
 
+const F1yFieldset = ({
+  legend = defaultStr,
+  children
+}) => (
+  <fieldset className="f1y-fieldset">
+    <legend className="f1y-fieldset__legend">
+      {legend}
+    </legend>
+    {children}
+  </fieldset>
+)
+
+
 const F1yBasicField = ({
   label = defaultRequired('F1yBasicField', 'label'),
   id = defaultRequired('F1yBasicField', 'id'),
@@ -54,10 +68,12 @@ const F1yBasicField = ({
   value = defaultStr,
   description = defaultStr,
   error = defaultStr,
-  type = 'text'
+  type = defaultFieldType
 }) => (
   <div className="f1y-basic-field">
-    <label htmlFor={id}>{label}</label>
+    <label htmlFor={id}>
+      {label}
+    </label>
     <input 
       id={id}
       type={type}
@@ -75,5 +91,6 @@ const F1yBasicField = ({
 
 export {
   F1yForm,
+  F1yFieldset,
   F1yBasicField
 }

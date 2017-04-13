@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { F1yForm, F1yBasicField } from './components/F1yForms/';
+import { 
+    F1yForm, 
+    F1yFieldset, 
+    F1yBasicField 
+  } from './components/F1yForms/';
 
 class App extends Component {
 
@@ -14,10 +18,18 @@ class App extends Component {
         <F1yForm
           submit={handleDefaultFunc}
         >
-          <F1yBasicField 
-            id="fname"
-            label="First Name"
-          />
+          <F1yFieldset 
+            legend="Your Name"
+          >
+            <F1yBasicField 
+              id="fname"
+              label="First"
+            />
+            <F1yBasicField 
+              id="lname"
+              label="Last"
+            />
+          </F1yFieldset>
         </F1yForm>
       </div>
     );
