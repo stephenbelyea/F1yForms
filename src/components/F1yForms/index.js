@@ -1,5 +1,5 @@
 import React from 'react';
-import './forma11y.css';
+import './f1yforms.css';
 
 
 const defaultStr = '';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { F1yForm, F1yBasicField } from './components/FormA11y/';
+import { F1yForm, F1yBasicField } from './components/F1yForms/';
 
 class App extends Component {
 
@@ -9,7 +9,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>FormA11y -- Accessible, Styleable Form Components</h1>
+        <h1>F1yForms</h1>
+        <p>Accessible, styleable form and field React components</p>
         <F1yForm
           submit={handleDefaultFunc}
         >
