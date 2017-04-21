@@ -31,7 +31,7 @@ Wrap sets of dependant fields (checkboxes, radios) in the fieldset to keep optio
 ### F1yField ###
 The main go-to field for text, email, number, and other general single-line inputs. 
 
-For the `style` property, use "simple" or "slick".
+For the `styling` property, use "simple" or "slick".
 
 ```
 <F1yField
@@ -45,6 +45,6 @@ For the `style` property, use "simple" or "slick".
   description={str = ''}
   error={str = ''}
   type={str = 'text'}
-  style={str = 'simple'} // Use 'simple' or 'slick'
+  styling={str = 'simple'}
 />
 ```

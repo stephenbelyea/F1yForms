@@ -76,11 +76,11 @@ const F1yField = ({
   error = defaultStr,
   type = defaultFieldType,
   required = defaultBool,
-  style = defaultStyle
+  styling = defaultStyle
 }) => (
-  <div className={`f1y-field f1y-field--${style}`}>
+  <div className={`f1y-field f1y-field--${styling}`}>
     <div className="f1y-field__wrap">
-      {style === 'simple' &&
+      {styling === 'simple' &&
         <label htmlFor={id}>{label}</label>
       }
       <input 
@@ -93,7 +93,7 @@ const F1yField = ({
         onFocus={focus}
         onBlur={blur}
       />
-      {style === 'slick' &&
+      {styling === 'slick' &&
         <label htmlFor={id}>{label}</label>
       }
     </div>

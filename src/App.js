@@ -33,7 +33,14 @@ class App extends Component {
           <F1yField 
             id="email"
             label="Email*"
+            type="email"
             required={true}
+          />
+          <F1yField 
+            id="phone"
+            label="Phone"
+            type="tel"
+            styling="slick"
           />
         </F1yForm>
       </div>
