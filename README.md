@@ -48,3 +48,24 @@ For the `styling` property, use "simple" or "slick".
   styling={str = 'simple'}
 />
 ```
+
+
+### F1yTextArea ###
+Mostly the same properties as the `F1yField`, but with more square footage. 
+
+For the `styling` property, use "simple" or "slick".
+
+```
+<F1yTextArea
+  label={str = 'REQUIRED'}
+  id={str = 'REQUIRED'}
+  change={func = () => null}
+  focus={func = () => null}
+  blur={func = () => null}
+  required={bool = false}
+  value={str = ''}
+  description={str = ''}
+  error={str = ''}
+  styling={str = 'simple'}
+/>
+```

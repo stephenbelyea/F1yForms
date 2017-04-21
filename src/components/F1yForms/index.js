@@ -102,9 +102,45 @@ const F1yField = ({
   </div>
 )
 
+const F1yTextArea = ({
+  label = defaultRequired('F1yTextArea', 'label'),
+  id = defaultRequired('F1yTextArea', 'id'),
+  change = defaultFunc,
+  focus = defaultFunc,
+  blur = defaultFunc,
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  required = defaultBool,
+  styling = defaultStyle
+}) => (
+  <div className={`f1y-field f1y-field--textarea f1y-field--${styling}`}>
+    <div className="f1y-field__wrap">
+      {styling === 'simple' &&
+        <label htmlFor={id}>{label}</label>
+      }
+      <textarea 
+        id={id}
+        value={value}
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      />
+      {styling === 'slick' &&
+        <label htmlFor={id}>{label}</label>
+      }
+    </div>
+    {showDescription(id, error, 'err')}
+    {showDescription(id, description)}
+  </div>
+)
+
 
 export {
   F1yForm,
   F1yFieldset,
-  F1yField
+  F1yField,
+  F1yTextArea
 }

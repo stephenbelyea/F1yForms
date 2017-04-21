@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { 
     F1yForm, 
     F1yFieldset, 
-    F1yField 
+    F1yField,
+    F1yTextArea 
   } from './components/F1yForms/';
 
 class App extends Component {
@@ -41,6 +42,10 @@ class App extends Component {
             label="Phone"
             type="tel"
             styling="slick"
+          />
+          <F1yTextArea 
+            id="instructions"
+            label="Special Instructions"
           />
         </F1yForm>
       </div>
