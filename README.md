@@ -28,19 +28,23 @@ Wrap sets of dependant fields (checkboxes, radios) in the fieldset to keep optio
 ```
 
 
-### F1yBasicField ###
+### F1yField ###
 The main go-to field for text, email, number, and other general single-line inputs. 
 
+For the `style` property, use "simple" or "slick".
+
 ```
-<F1yBasicField
+<F1yField
   label={str = 'REQUIRED'}
   id={str = 'REQUIRED'}
   change={func = () => null}
   focus={func = () => null}
   blur={func = () => null}
+  required={bool = false}
   value={str = ''}
   description={str = ''}
   error={str = ''}
   type={str = 'text'}
+  style={str = 'simple'} // Use 'simple' or 'slick'
 />
 ```

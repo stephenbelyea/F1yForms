@@ -2,13 +2,17 @@ import React from 'react'
 import './f1yforms.css'
 
 
-const defaultStr = ''
-const defaultFunc = () => null
+const defaultStr = '',
+      defaultBool = false,
+      defaultStyle = 'simple',
+      defaultFunc = () => null,
+      defaultFieldType = 'text'
+
 const defaultRequired = (field, prop) => {
   console.error(`${field} requires '${prop}' prop!`)
   return defaultStr
 }
-const defaultFieldType = 'text'
+
 
 const describedBy = (id, desc, err) => {
   let describedby = defaultStr
@@ -25,7 +29,7 @@ const showDescription = (id, text, type = 'desc') => {
   return (
     <span 
       id={`${id}_${type}`} 
-      className={`f1y-field-${type}`}
+      className={`f1y-field__${type}`}
     >
       {text}
     </span>
@@ -61,30 +65,38 @@ const F1yFieldset = ({
 )
 
 
-const F1yBasicField = ({
-  label = defaultRequired('F1yBasicField', 'label'),
-  id = defaultRequired('F1yBasicField', 'id'),
+const F1yField = ({
+  label = defaultRequired('F1yField', 'label'),
+  id = defaultRequired('F1yField', 'id'),
   change = defaultFunc,
   focus = defaultFunc,
   blur = defaultFunc,
   value = defaultStr,
   description = defaultStr,
   error = defaultStr,
-  type = defaultFieldType
+  type = defaultFieldType,
+  required = defaultBool,
+  style = defaultStyle
 }) => (
-  <div className="f1y-basic-field">
-    <label htmlFor={id}>
-      {label}
-    </label>
-    <input 
-      id={id}
-      type={type}
-      value={value}
-      aria-describedby={describedBy(id, description, error)}
-      onChange={change}
-      onFocus={focus}
-      onBlur={blur}
-    />
+  <div className={`f1y-field f1y-field--${style}`}>
+    <div className="f1y-field__wrap">
+      {style === 'simple' &&
+        <label htmlFor={id}>{label}</label>
+      }
+      <input 
+        id={id}
+        type={type}
+        value={value}
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      />
+      {style === 'slick' &&
+        <label htmlFor={id}>{label}</label>
+      }
+    </div>
     {showDescription(id, error, 'err')}
     {showDescription(id, description)}
   </div>
@@ -94,5 +106,5 @@ const F1yBasicField = ({
 export {
   F1yForm,
   F1yFieldset,
-  F1yBasicField
+  F1yField
 }

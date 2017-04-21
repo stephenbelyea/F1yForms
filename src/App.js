@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { 
     F1yForm, 
     F1yFieldset, 
-    F1yBasicField 
+    F1yField 
   } from './components/F1yForms/';
 
 class App extends Component {
@@ -21,15 +21,20 @@ class App extends Component {
           <F1yFieldset 
             legend="Your Name"
           >
-            <F1yBasicField 
+            <F1yField 
               id="fname"
               label="First"
             />
-            <F1yBasicField 
+            <F1yField 
               id="lname"
               label="Last"
             />
           </F1yFieldset>
+          <F1yField 
+            id="email"
+            label="Email*"
+            required={true}
+          />
         </F1yForm>
       </div>
     );
