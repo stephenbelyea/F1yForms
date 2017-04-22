@@ -1,11 +1,25 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Tahoma, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #464646;
 }
 
 .App {
   width: 85vw;
+  max-width: 40rem;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.row--halves > div {
+  flex-basis: 46%;
 }

@@ -81,12 +81,18 @@ const F1yField = ({
   <div className={`f1y-field f1y-field--${styling}`}>
     <div className="f1y-field__wrap">
       {styling === 'simple' &&
-        <label htmlFor={id}>{label}</label>
+        <label 
+          htmlFor={id}
+          className="f1y-field__label"
+        >
+          {label}
+        </label>
       }
       <input 
         id={id}
         type={type}
         value={value}
+        className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
         onChange={change}
@@ -94,7 +100,12 @@ const F1yField = ({
         onBlur={blur}
       />
       {styling === 'slick' &&
-        <label htmlFor={id}>{label}</label>
+        <label 
+          htmlFor={id}
+          className="f1y-field__label"
+        >
+          {label}
+        </label>
       }
     </div>
     {showDescription(id, error, 'err')}
@@ -117,11 +128,17 @@ const F1yTextArea = ({
   <div className={`f1y-field f1y-field--textarea f1y-field--${styling}`}>
     <div className="f1y-field__wrap">
       {styling === 'simple' &&
-        <label htmlFor={id}>{label}</label>
+        <label 
+          htmlFor={id}
+          className="f1y-field__label"
+        >
+          {label}
+        </label>
       }
       <textarea 
         id={id}
         value={value}
+        className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
         onChange={change}
@@ -129,7 +146,12 @@ const F1yTextArea = ({
         onBlur={blur}
       />
       {styling === 'slick' &&
-        <label htmlFor={id}>{label}</label>
+        <label 
+          htmlFor={id}
+          className="f1y-field__label"
+        >
+          {label}
+        </label>
       }
     </div>
     {showDescription(id, error, 'err')}

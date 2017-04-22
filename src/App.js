@@ -22,27 +22,31 @@ class App extends Component {
           <F1yFieldset 
             legend="Your Name"
           >
-            <F1yField 
-              id="fname"
-              label="First"
-            />
-            <F1yField 
-              id="lname"
-              label="Last"
-            />
+            <div className="row row--halves">
+              <F1yField 
+                id="fname"
+                label="First"
+              />
+              <F1yField 
+                id="lname"
+                label="Last"
+              />
+            </div>
           </F1yFieldset>
-          <F1yField 
-            id="email"
-            label="Email*"
-            type="email"
-            required={true}
-          />
-          <F1yField 
-            id="phone"
-            label="Phone"
-            type="tel"
-            styling="slick"
-          />
+          <div className="row row--halves">
+            <F1yField 
+              id="email"
+              label="Email*"
+              type="email"
+              required={true}
+            />
+            <F1yField 
+              id="phone"
+              label="Phone"
+              type="tel"
+              description="Format (555) 123-4567"
+            />
+          </div>
           <F1yTextArea 
             id="instructions"
             label="Special Instructions"
