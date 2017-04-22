@@ -1,10 +1,10 @@
-.f1y-form {
+.f1y-form--simple {
   border: solid .1rem #dedede;
   border-radius: .25rem;
   padding: 2rem;
 }
 
-.f1y-fieldset {
+.f1y-form--simple .f1y-fieldset {
   border-left: none;
   border-right: none;
   border-top: solid .1rem #dedede;
@@ -13,52 +13,52 @@
   margin: 0 0 .75rem;
 }
 
-.f1y-fieldset + .f1y-fieldset {
+.f1y-form--simple .f1y-fieldset + .f1y-fieldset {
   margin-top: 1.75rem;
 }
 
-.f1y-fieldset__legend {
+.f1y-form--simple .f1y-fieldset__legend {
   font-size: .825rem;
   text-transform: uppercase;
   margin: 0 0 .25rem;
   padding-right: .75rem;
 }
 
-.f1y-field {
+.f1y-form--simple .f1y-field {
   margin: .5rem 0 1rem;
 }
 
-.f1y-field__wrap {
+.f1y-form--simple .f1y-field__wrap {
   width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.f1y-field__input {
+.f1y-form--simple .f1y-field__wrap > * {
+  flex: 1 1 100%;
+  display: block;
+}
+
+.f1y-form--simple .f1y-field__input {
   border: solid .1rem #ababab;
-  border-radius: .25rem;
+  border-radius: .2rem;
   background: #fff;
   padding: .35rem .5rem;
   line-height: 1.5;
-  width: calc(100% - 1.2rem);
-  display: block;
   font-size: inherit;
 }
 
-.f1y-field__label {
+.f1y-form--simple .f1y-field__label {
   margin: 0 0 .25rem;
-  display: block;
 }
 
-.f1y-field__desc,
-.f1y-field__error {
+.f1y-form--simple .f1y-field__description,
+.f1y-form--simple .f1y-field__error {
   display: block;
   margin: .275rem 0 0;
   font-size: .825rem;
 }
 
-.f1y-field__desc {
+.f1y-form--simple .f1y-field__description {
   opacity: .675;
-}
-
-.f1y-field__error {
-
 }

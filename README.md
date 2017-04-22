@@ -5,11 +5,12 @@ Accessible, styleable Form and field React components
 
 
 ### F1yForm ###
-Top-level component. Wrap your fields in this fella.
+Top-level component. Wrap your fields in this fella. For the `styling` property, use "plain" (no styling), "simple" or "slick".
 
 ```
 <F1yForm 
   submit={func = () => null}
+  styling={str = 'simple'}
 >
  ...
 </F1yForm>
@@ -31,8 +32,6 @@ Wrap sets of dependant fields (checkboxes, radios) in the fieldset to keep optio
 ### F1yField ###
 The main go-to field for text, email, number, and other general single-line inputs. 
 
-For the `styling` property, use "simple" or "slick".
-
 ```
 <F1yField
   label={str = 'REQUIRED'}
@@ -45,15 +44,12 @@ For the `styling` property, use "simple" or "slick".
   description={str = ''}
   error={str = ''}
   type={str = 'text'}
-  styling={str = 'simple'}
 />
 ```
 
 
 ### F1yTextArea ###
 Mostly the same properties as the `F1yField`, but with more square footage. 
-
-For the `styling` property, use "simple" or "slick".
 
 ```
 <F1yTextArea
@@ -66,6 +62,5 @@ For the `styling` property, use "simple" or "slick".
   value={str = ''}
   description={str = ''}
   error={str = ''}
-  styling={str = 'simple'}
 />
 ```

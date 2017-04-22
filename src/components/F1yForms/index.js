@@ -1,10 +1,12 @@
 import React from 'react'
-import './f1yforms.css'
+import './f1yforms-plain.css'
+import './f1yforms-simple.css'
+import './f1yforms-slick.css'
 
 
 const defaultStr = '',
       defaultBool = false,
-      defaultStyle = 'simple',
+      defaultStyling = 'simple',
       defaultFunc = () => null,
       defaultFieldType = 'text'
 
@@ -17,14 +19,14 @@ const defaultRequired = (field, prop) => {
 const describedBy = (id, desc, err) => {
   let describedby = defaultStr
   if (err !== defaultStr && desc !== defaultStr) {
-    describedby = `${id}_err ${id}_desc`
+    describedby = `${id}_error ${id}_description`
   }
-  else if (err !== defaultStr) describedby = `${id}_err`
-  else if (desc !== defaultStr) describedby = `${id}_desc`
+  else if (err !== defaultStr) describedby = `${id}_error`
+  else if (desc !== defaultStr) describedby = `${id}_description`
   return describedby
 }
 
-const showDescription = (id, text, type = 'desc') => {
+const showDescription = (id, text, type = 'description') => {
   if (text === defaultStr) return null
   return (
     <span 
@@ -39,10 +41,11 @@ const showDescription = (id, text, type = 'desc') => {
 
 const F1yForm = ({
   submit = defaultFunc,
+  styling = defaultStyling,
   children
 }) => (
   <form 
-    className="f1y-form"
+    className={`f1y-form f1y-form--${styling}`}
     onSubmit={submit}
   >
     {children}
@@ -75,19 +78,10 @@ const F1yField = ({
   description = defaultStr,
   error = defaultStr,
   type = defaultFieldType,
-  required = defaultBool,
-  styling = defaultStyle
+  required = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--${styling}`}>
+  <div className={`f1y-field f1y-field--basic`}>
     <div className="f1y-field__wrap">
-      {styling === 'simple' &&
-        <label 
-          htmlFor={id}
-          className="f1y-field__label"
-        >
-          {label}
-        </label>
-      }
       <input 
         id={id}
         type={type}
@@ -99,16 +93,14 @@ const F1yField = ({
         onFocus={focus}
         onBlur={blur}
       />
-      {styling === 'slick' &&
-        <label 
-          htmlFor={id}
-          className="f1y-field__label"
-        >
-          {label}
-        </label>
-      }
+      <label 
+        htmlFor={id}
+        className="f1y-field__label"
+      >
+        {label}
+      </label>
     </div>
-    {showDescription(id, error, 'err')}
+    {showDescription(id, error, 'error')}
     {showDescription(id, description)}
   </div>
 )
@@ -122,19 +114,10 @@ const F1yTextArea = ({
   value = defaultStr,
   description = defaultStr,
   error = defaultStr,
-  required = defaultBool,
-  styling = defaultStyle
+  required = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--textarea f1y-field--${styling}`}>
+  <div className={`f1y-field f1y-field--textarea`}>
     <div className="f1y-field__wrap">
-      {styling === 'simple' &&
-        <label 
-          htmlFor={id}
-          className="f1y-field__label"
-        >
-          {label}
-        </label>
-      }
       <textarea 
         id={id}
         value={value}
@@ -145,16 +128,14 @@ const F1yTextArea = ({
         onFocus={focus}
         onBlur={blur}
       />
-      {styling === 'slick' &&
-        <label 
-          htmlFor={id}
-          className="f1y-field__label"
-        >
-          {label}
-        </label>
-      }
+      <label 
+        htmlFor={id}
+        className="f1y-field__label"
+      >
+        {label}
+      </label>
     </div>
-    {showDescription(id, error, 'err')}
+    {showDescription(id, error, 'error')}
     {showDescription(id, description)}
   </div>
 )

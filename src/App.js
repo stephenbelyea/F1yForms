@@ -18,6 +18,7 @@ class App extends Component {
         <p>Accessible, styleable form and field React components</p>
         <F1yForm
           submit={handleDefaultFunc}
+          styling="simple"
         >
           <F1yFieldset 
             legend="Your Name"
