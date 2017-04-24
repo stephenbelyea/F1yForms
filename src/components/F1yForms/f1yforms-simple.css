@@ -40,12 +40,16 @@
 }
 
 .f1y-form--simple .f1y-field__input {
-  border: solid .1rem #ababab;
+  border: solid .1rem #acacac;
   border-radius: .2rem;
   background: #fff;
   padding: .35rem .5rem;
   line-height: 1.5;
   font-size: inherit;
+}
+
+.f1y-form--simple .f1y-field--select .f1y-field__input {
+  height: 2.5rem;
 }
 
 .f1y-form--simple .f1y-field__label {

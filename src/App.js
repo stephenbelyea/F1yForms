@@ -3,7 +3,9 @@ import {
     F1yForm, 
     F1yFieldset, 
     F1yField,
-    F1yTextArea 
+    F1yTextArea,
+    F1ySelect,
+    F1ySelectOption 
   } from './components/F1yForms/';
 
 class App extends Component {
@@ -47,6 +49,20 @@ class App extends Component {
               type="tel"
               description="Format (555) 123-4567"
             />
+          </div>
+          <div className="row row--halves">
+            <F1yField 
+              id="city"
+              label="City"
+            />
+            <F1ySelect 
+              id="province"
+              label="Province"
+            >
+              <F1ySelectOption 
+                label="Select an option"
+              />
+            </F1ySelect>
           </div>
           <F1yTextArea 
             id="instructions"

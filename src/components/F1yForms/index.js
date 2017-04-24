@@ -78,7 +78,8 @@ const F1yField = ({
   description = defaultStr,
   error = defaultStr,
   type = defaultFieldType,
-  required = defaultBool
+  required = defaultBool,
+  disabled = defaultBool
 }) => (
   <div className={`f1y-field f1y-field--basic`}>
     <div className="f1y-field__wrap">
@@ -89,6 +90,7 @@ const F1yField = ({
         className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
+        disabled={disabled}
         onChange={change}
         onFocus={focus}
         onBlur={blur}
@@ -114,7 +116,8 @@ const F1yTextArea = ({
   value = defaultStr,
   description = defaultStr,
   error = defaultStr,
-  required = defaultBool
+  required = defaultBool,
+  disabled = defaultBool
 }) => (
   <div className={`f1y-field f1y-field--textarea`}>
     <div className="f1y-field__wrap">
@@ -124,6 +127,7 @@ const F1yTextArea = ({
         className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
+        disabled={disabled}
         onChange={change}
         onFocus={focus}
         onBlur={blur}
@@ -141,9 +145,66 @@ const F1yTextArea = ({
 )
 
 
+const F1ySelect = ({
+  label = defaultRequired('F1yTextArea', 'label'),
+  id = defaultRequired('F1yTextArea', 'id'),
+  change = defaultFunc,
+  focus = defaultFunc,
+  blur = defaultFunc,
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  required = defaultBool,
+  disabled = defaultBool,
+  children
+}) => (
+  <div className={`f1y-field f1y-field--select`}>
+    <div className="f1y-field__wrap">
+      <select 
+        id={id}
+        value={value}
+        className="f1y-field__input"
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        disabled={disabled}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      >
+        {children}
+      </select>
+      <label 
+        htmlFor={id}
+        className="f1y-field__label"
+      >
+        {label}
+      </label>
+    </div>
+    {showDescription(id, error, 'error')}
+    {showDescription(id, description)}
+  </div>
+)
+
+
+const F1ySelectOption = ({
+  value = defaultStr,
+  label = defaultStr,
+  disabled = defaultBool
+}) => (
+  <option 
+    value={value}
+    disabled={disabled}
+  >
+    {label}
+  </option>
+)
+
+
 export {
   F1yForm,
   F1yFieldset,
   F1yField,
-  F1yTextArea
+  F1yTextArea,
+  F1ySelect,
+  F1ySelectOption
 }
