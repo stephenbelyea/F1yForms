@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import autoBind from 'react-autobind'
 import { 
     F1yForm, 
     F1yFieldset, 
@@ -6,13 +7,47 @@ import {
     F1yTextArea,
     F1ySelect,
     F1ySelectOption 
-  } from './components/F1yForms/';
+  } from './components/F1yForms/'
 
 class App extends Component {
 
-  render() {
+  constructor() {
+    super()
+    autoBind(this)
+    this.state = {
+      values: {
+        fname: '',
+        lname: '',
+        email: '',
+        phone: ''
+      },
+      errors: {
+        fname: '',
+        lname: '',
+        email: '',
+        phone: ''
+      }
+    }
+  }
 
-    const handleDefaultFunc = e => e.preventDefault();
+  _onChangeField(e) {
+    const values = { ...this.state.values },
+          errors = { ...this.state.errors },
+          tar = e.currentTarget
+
+    values[tar.id] = tar.value
+
+    if (tar.getAttribute('aria-required')) {
+      if (tar.value !== '') errors[tar.id] = ''
+      else errors[tar.id] = 'Field must not be left empty'
+    }
+
+    this.setState({ values, errors })
+  }
+
+  render() {
+    const handleDefaultFunc = e => e.preventDefault()
+    const { values, errors } = this.state
 
     return (
       <div className="App">
@@ -28,25 +63,38 @@ class App extends Component {
             <div className="row row--halves">
               <F1yField 
                 id="fname"
-                label="First"
+                label="First*"
+                change={this._onChangeField}
+                value={values.fname}
+                error={errors.fname}
+                required={true}
               />
               <F1yField 
                 id="lname"
-                label="Last"
+                label="Last*"
+                change={this._onChangeField}
+                value={values.lname}
+                error={errors.lname}
+                required={true}
               />
             </div>
           </F1yFieldset>
           <div className="row row--halves">
             <F1yField 
               id="email"
-              label="Email*"
               type="email"
+              label="Email*"
+              change={this._onChangeField}
+              value={values.email}
+              error={errors.email}
               required={true}
             />
             <F1yField 
               id="phone"
-              label="Phone"
               type="tel"
+              label="Phone"
+              change={this._onChangeField}
+              value={values.phone}
               description="Format (555) 123-4567"
             />
           </div>

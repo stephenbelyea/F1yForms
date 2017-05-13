@@ -90,6 +90,7 @@ const F1yField = ({
         className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
+        aria-invalid={error === '' ? false : true}
         disabled={disabled}
         onChange={change}
         onFocus={focus}
@@ -127,6 +128,7 @@ const F1yTextArea = ({
         className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
+        aria-invalid={error === '' ? false : true}
         disabled={disabled}
         onChange={change}
         onFocus={focus}
@@ -166,6 +168,7 @@ const F1ySelect = ({
         className="f1y-field__input"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
+        aria-invalid={error === '' ? false : true}
         disabled={disabled}
         onChange={change}
         onFocus={focus}

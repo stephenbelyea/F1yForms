@@ -66,3 +66,23 @@
 .f1y-form--simple .f1y-field__description {
   opacity: .675;
 }
+
+.f1y-form--simple .f1y-field__input:disabled,
+.f1y-form--simple .f1y-field__input:disabled + .f1y-field__label {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.f1y-form--simple .f1y-field__input:disabled {
+  background: #efefef;
+}
+
+.f1y-form--simple .f1y-field__input[aria-invalid=true],
+.f1y-form--simple .f1y-field__input[aria-invalid=true] + .f1y-field__label,
+.f1y-form--simple .f1y-field__error {
+  color: crimson;
+}
+
+.f1y-form--simple .f1y-field__input[aria-invalid=true] {
+  border-color: crimson;
+}
