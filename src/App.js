@@ -6,7 +6,8 @@ import {
     F1yField,
     F1yTextArea,
     F1ySelect,
-    F1ySelectOption 
+    F1ySelectOption,
+    F1yRadio 
   } from './components/F1yForms/'
 
 const provinceOptions = [
@@ -37,6 +38,7 @@ class App extends Component {
         phone: '',
         city: '',
         province: '',
+        residence: '',
         instructions: ''
       },
       errors: {
@@ -46,6 +48,7 @@ class App extends Component {
         phone: '',
         city: '',
         province: '',
+        residence: '',
         instructions: ''
       }
     }
@@ -148,6 +151,24 @@ class App extends Component {
               })}
             </F1ySelect>
           </div>
+          <F1yFieldset 
+            legend="Type of residence"
+          >
+            <F1yRadio
+              id="residence"
+              label="Apartment"
+              value="Apartment"
+              change={this._onChangeField}
+              checked={values.residence === 'Apartment'}
+            />
+            <F1yRadio
+              id="residence"
+              label="Condo"
+              value="Condo"
+              change={this._onChangeField}
+              checked={values.residence === 'Condo'}
+            />
+          </F1yFieldset>
           <F1yTextArea 
             id="instructions"
             label="Special Instructions"

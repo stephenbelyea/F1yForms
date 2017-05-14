@@ -202,6 +202,46 @@ const F1ySelectOption = ({
   </option>
 )
 
+const F1yRadio = ({
+  label = defaultRequired('F1yRadio', 'label'),
+  id = defaultRequired('F1yRadio', 'id'),
+  change = defaultFunc,
+  focus = defaultFunc,
+  blur = defaultFunc,
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  required = defaultBool,
+  disabled = defaultBool,
+  checked = defaultBool
+}) => (
+  <div className={`f1y-field f1y-field--radio`}>
+    <div className="f1y-field__wrap">
+      <input 
+        id={id}
+        type="radio"
+        value={value}
+        className="f1y-field__input"
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        aria-invalid={error === '' ? false : true}
+        disabled={disabled}
+        checked={checked}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      />
+      <label 
+        htmlFor={id}
+        className="f1y-field__label"
+      >
+        {label}
+      </label>
+    </div>
+    {showDescription(id, error, 'error')}
+    {showDescription(id, description)}
+  </div>
+)
 
 export {
   F1yForm,
@@ -209,5 +249,6 @@ export {
   F1yField,
   F1yTextArea,
   F1ySelect,
-  F1ySelectOption
+  F1ySelectOption,
+  F1yRadio
 }
