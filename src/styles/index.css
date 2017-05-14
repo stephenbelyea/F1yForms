@@ -22,5 +22,5 @@ body {
 }
 
 .row--halves > div {
-  flex-basis: 46%;
+  width: 47.5%;
 }

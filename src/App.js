@@ -9,6 +9,21 @@ import {
     F1ySelectOption 
   } from './components/F1yForms/'
 
+const provinceOptions = [
+  { id: 1, value: 'AB', label: 'Alberta' },
+  { id: 2, value: 'BC', label: 'British Columbia' },
+  { id: 3, value: 'MB', label: 'Manitoba' },
+  { id: 4, value: 'NB', label: 'New Brunswick' },
+  { id: 5, value: 'NL', label: 'Newfoundland and Labrador' },
+  { id: 6, value: 'NW', label: 'Northwest Territories' },
+  { id: 7, value: 'NS', label: 'Nova Scotia' },
+  { id: 8, value: 'NU', label: 'Nunavut' },
+  { id: 9, value: 'ON', label: 'Ontario' },
+  { id: 10, value: 'SK', label: 'Saskatchewan' },
+  { id: 11, value: 'QC', label: 'Quebec' },
+  { id: 12, value: 'YU', label: 'Yukon' }
+]
+
 class App extends Component {
 
   constructor() {
@@ -19,13 +34,19 @@ class App extends Component {
         fname: '',
         lname: '',
         email: '',
-        phone: ''
+        phone: '',
+        city: '',
+        province: '',
+        instructions: ''
       },
       errors: {
         fname: '',
         lname: '',
         email: '',
-        phone: ''
+        phone: '',
+        city: '',
+        province: '',
+        instructions: ''
       }
     }
   }
@@ -39,7 +60,7 @@ class App extends Component {
 
     if (tar.getAttribute('aria-required')) {
       if (tar.value !== '') errors[tar.id] = ''
-      else errors[tar.id] = 'Field must not be left empty'
+      else errors[tar.id] = 'Field is required!'
     }
 
     this.setState({ values, errors })
@@ -102,19 +123,36 @@ class App extends Component {
             <F1yField 
               id="city"
               label="City"
+              change={this._onChangeField}
+              value={values.city}
             />
             <F1ySelect 
               id="province"
-              label="Province"
+              label="Province*"
+              change={this._onChangeField}
+              value={values.province}
+              error={errors.province}
+              required={true}
             >
               <F1ySelectOption 
-                label="Select an option"
+                label="Select your province"
               />
+              {provinceOptions.length > 0 && provinceOptions.map(prov => {
+                return (
+                  <F1ySelectOption 
+                    key={prov.id}
+                    label={prov.label}
+                    value={prov.value}
+                  />
+                )
+              })}
             </F1ySelect>
           </div>
           <F1yTextArea 
             id="instructions"
             label="Special Instructions"
+            change={this._onChangeField}
+            value={values.instructions}
           />
         </F1yForm>
       </div>
