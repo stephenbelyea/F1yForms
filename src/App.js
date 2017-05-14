@@ -59,11 +59,13 @@ class App extends Component {
           errors = { ...this.state.errors },
           tar = e.currentTarget
 
-    values[tar.id] = tar.value
+    let key = tar.id
+    if (tar.type && tar.type === 'radio') key = tar.name
+    values[key] = tar.value
 
     if (tar.getAttribute('aria-required')) {
-      if (tar.value !== '') errors[tar.id] = ''
-      else errors[tar.id] = 'Field is required!'
+      if (tar.value !== '') errors[key] = ''
+      else errors[key] = 'Field is required!'
     }
 
     this.setState({ values, errors })
@@ -155,18 +157,28 @@ class App extends Component {
             legend="Type of residence"
           >
             <F1yRadio
-              id="residence"
+              id="residence-apartment"
+              name="residence"
               label="Apartment"
-              value="Apartment"
+              value="apartment"
               change={this._onChangeField}
-              checked={values.residence === 'Apartment'}
+              checked={values.residence === 'apartment'}
             />
             <F1yRadio
-              id="residence"
+              id="residence-condo"
+              name="residence"
               label="Condo"
-              value="Condo"
+              value="condo"
               change={this._onChangeField}
-              checked={values.residence === 'Condo'}
+              checked={values.residence === 'condo'}
+            />
+            <F1yRadio
+              id="residence-house"
+              name="residence"
+              label="House"
+              value="house"
+              change={this._onChangeField}
+              checked={values.residence === 'house'}
             />
           </F1yFieldset>
           <F1yTextArea 

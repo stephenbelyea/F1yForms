@@ -204,6 +204,7 @@ const F1ySelectOption = ({
 
 const F1yRadio = ({
   label = defaultRequired('F1yRadio', 'label'),
+  name = defaultRequired('F1yRadio', 'name'),
   id = defaultRequired('F1yRadio', 'id'),
   change = defaultFunc,
   focus = defaultFunc,
@@ -216,12 +217,13 @@ const F1yRadio = ({
   checked = defaultBool
 }) => (
   <div className={`f1y-field f1y-field--radio`}>
-    <div className="f1y-field__wrap">
+    <div className="f1y-field__wrap--radio">
       <input 
         id={id}
         type="radio"
+        name={name}
         value={value}
-        className="f1y-field__input"
+        className="f1y-field__input--radio"
         aria-describedby={describedBy(id, description, error)}
         aria-required={required}
         aria-invalid={error === '' ? false : true}
@@ -233,7 +235,7 @@ const F1yRadio = ({
       />
       <label 
         htmlFor={id}
-        className="f1y-field__label"
+        className="f1y-field__label--radio"
       >
         {label}
       </label>

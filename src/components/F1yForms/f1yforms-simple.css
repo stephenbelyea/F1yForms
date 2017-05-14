@@ -1,7 +1,7 @@
 .f1y-form--simple {
   border: solid .1rem #dedede;
   border-radius: .25rem;
-  padding: 2rem;
+  padding: .75rem 2rem 1rem;
 }
 
 .f1y-form--simple .f1y-fieldset {
@@ -10,11 +10,11 @@
   border-top: solid .1rem #dedede;
   border-bottom: solid .1rem #dedede;
   padding: 0 0 .75rem;
-  margin: 0 0 .75rem;
+  margin: .5rem 0 1rem;
 }
 
-.f1y-form--simple .f1y-fieldset + .f1y-fieldset {
-  margin-top: 1.75rem;
+.f1y-form--simple .f1y-fieldset:not(first-of-type){
+  margin-top: 1.5rem;
 }
 
 .f1y-form--simple .f1y-fieldset__legend {
@@ -28,10 +28,21 @@
   margin: .5rem 0 1rem;
 }
 
+.f1y-form--simple .f1y-field--radio {
+  margin: .75rem 1.5rem .75rem 0;
+  display: inline-block;
+}
+
 .f1y-form--simple .f1y-field__wrap {
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.f1y-form--simple .f1y-field__wrap--radio {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
 }
 
 .f1y-form--simple .f1y-field__wrap > * {
@@ -50,6 +61,10 @@
 
 .f1y-form--simple .f1y-field--select .f1y-field__input {
   height: 2.5rem;
+}
+
+.f1y-form--simple .f1y-field__input--radio {
+  margin: 0 .5rem 0 0;
 }
 
 .f1y-form--simple .f1y-field__label {
