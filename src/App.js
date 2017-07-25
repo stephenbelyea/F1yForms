@@ -7,34 +7,10 @@ import {
     F1yTextArea,
     F1ySelect,
     F1ySelectOption,
-    F1yRadio 
+    F1yRadio,
+    F1ySubmit 
   } from './components/F1yForms/'
-
-const provinceOptions = [
-  { id: 1, value: 'AB', label: 'Alberta' },
-  { id: 2, value: 'BC', label: 'British Columbia' },
-  { id: 3, value: 'MB', label: 'Manitoba' },
-  { id: 4, value: 'NB', label: 'New Brunswick' },
-  { id: 5, value: 'NL', label: 'Newfoundland and Labrador' },
-  { id: 6, value: 'NW', label: 'Northwest Territories' },
-  { id: 7, value: 'NS', label: 'Nova Scotia' },
-  { id: 8, value: 'NU', label: 'Nunavut' },
-  { id: 9, value: 'ON', label: 'Ontario' },
-  { id: 10, value: 'SK', label: 'Saskatchewan' },
-  { id: 11, value: 'QC', label: 'Quebec' },
-  { id: 12, value: 'YU', label: 'Yukon' }
-]
-
-const demoFields = {
-  fname: '',
-  lname: '',
-  email: '',
-  phone: '',
-  city: '',
-  province: '',
-  residence: '',
-  instructions: ''
-}
+import * as fields from './utility/fields'
 
 class App extends Component {
 
@@ -42,8 +18,9 @@ class App extends Component {
     super()
     autoBind(this)
     this.state = {
-      values: {...demoFields},
-      errors: {...demoFields}
+      values: {...fields.demoFields},
+      errors: {...fields.demoFields},
+      display: 'form'
     }
   }
 
@@ -80,135 +57,152 @@ class App extends Component {
     this._validateField(tar)
   }
 
+  _onSubmitForm(e) {
+    if (e) e.preventDefault();
+    this.setState({
+      display: 'success',
+      values: {...fields.demoFields},
+      errors: {...fields.demoFields}
+    });
+  }
+
   render() {
-    const handleDefaultFunc = e => e.preventDefault()
-    const { values, errors } = this.state
+    const { values, errors, display } = this.state
 
     return (
       <div className="App">
         <h1>F1yForms</h1>
         <p>Accessible, styleable form and field React components</p>
-        <F1yForm
-          submit={handleDefaultFunc}
-          styling="simple"
-        >
-          <F1yFieldset 
-            legend="Your Name"
+        {display === 'success' &&
+          <p className="success">Form successfully submitted!</p>
+        }
+        {display === 'form' &&
+          <F1yForm
+            submit={this._onSubmitForm}
           >
+            <F1yFieldset 
+              legend="Your Name"
+            >
+              <div className="row row--halves">
+                <F1yField 
+                  id="fname"
+                  label="First*"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  value={values.fname}
+                  error={errors.fname}
+                  required={true}
+                />
+                <F1yField 
+                  id="lname"
+                  label="Last*"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  value={values.lname}
+                  error={errors.lname}
+                  required={true}
+                />
+              </div>
+            </F1yFieldset>
             <div className="row row--halves">
               <F1yField 
-                id="fname"
-                label="First*"
+                id="email"
+                type="email"
+                label="Email*"
                 change={this._onChangeField}
                 blur={this._onBlurField}
-                value={values.fname}
-                error={errors.fname}
+                value={values.email}
+                error={errors.email}
                 required={true}
               />
               <F1yField 
-                id="lname"
-                label="Last*"
+                id="phone"
+                type="tel"
+                label="Phone"
                 change={this._onChangeField}
                 blur={this._onBlurField}
-                value={values.lname}
-                error={errors.lname}
-                required={true}
+                value={values.phone}
+                description="Format (555) 123-4567"
               />
             </div>
-          </F1yFieldset>
-          <div className="row row--halves">
-            <F1yField 
-              id="email"
-              type="email"
-              label="Email*"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              value={values.email}
-              error={errors.email}
-              required={true}
-            />
-            <F1yField 
-              id="phone"
-              type="tel"
-              label="Phone"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              value={values.phone}
-              description="Format (555) 123-4567"
-            />
-          </div>
-          <div className="row row--halves">
-            <F1yField 
-              id="city"
-              label="City"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              value={values.city}
-            />
-            <F1ySelect 
-              id="province"
-              label="Province*"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              value={values.province}
-              error={errors.province}
-              required={true}
-            >
-              <F1ySelectOption 
-                label="Select your province"
+            <div className="row row--halves">
+              <F1yField 
+                id="city"
+                label="City"
                 change={this._onChangeField}
-                selected={values.province}
+                blur={this._onBlurField}
+                value={values.city}
               />
-              {provinceOptions.length > 0 && provinceOptions.map(prov => {
-                return (
-                  <F1ySelectOption 
-                    key={prov.id}
-                    label={prov.label}
-                    value={prov.value}
-                  />
-                )
-              })}
-            </F1ySelect>
-          </div>
-          <F1yFieldset 
-            legend="Type of residence"
-          >
-            <F1yRadio
-              id="residence-apartment"
-              name="residence"
-              label="Apartment"
-              value="apartment"
+              <F1ySelect 
+                id="province"
+                label="Province*"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                value={values.province}
+                error={errors.province}
+                required={true}
+              >
+                <F1ySelectOption 
+                  label="Select your province"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  selected={values.province}
+                />
+                {fields.provinceOptions.map(prov => {
+                  return (
+                    <F1ySelectOption 
+                      key={prov.id}
+                      label={prov.label}
+                      value={prov.value}
+                    />
+                  )
+                })}
+              </F1ySelect>
+            </div>
+            <F1yFieldset 
+              legend="Type of residence"
+            >
+              <F1yRadio
+                id="residence-apartment"
+                name="residence"
+                label="Apartment"
+                value="apartment"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.residence === 'apartment'}
+              />
+              <F1yRadio
+                id="residence-condo"
+                name="residence"
+                label="Condo"
+                value="condo"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.residence === 'condo'}
+              />
+              <F1yRadio
+                id="residence-house"
+                name="residence"
+                label="House"
+                value="house"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.residence === 'house'}
+              />
+            </F1yFieldset>
+            <F1yTextArea 
+              id="instructions"
+              label="Special Instructions"
               change={this._onChangeField}
               blur={this._onBlurField}
-              checked={values.residence === 'apartment'}
+              value={values.instructions}
             />
-            <F1yRadio
-              id="residence-condo"
-              name="residence"
-              label="Condo"
-              value="condo"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              checked={values.residence === 'condo'}
+            <F1ySubmit 
+              label="Register"
+              submit={this._onSubmitForm}
             />
-            <F1yRadio
-              id="residence-house"
-              name="residence"
-              label="House"
-              value="house"
-              change={this._onChangeField}
-              blur={this._onBlurField}
-              checked={values.residence === 'house'}
-            />
-          </F1yFieldset>
-          <F1yTextArea 
-            id="instructions"
-            label="Special Instructions"
-            change={this._onChangeField}
-            blur={this._onBlurField}
-            value={values.instructions}
-          />
-        </F1yForm>
+          </F1yForm>
+        }
       </div>
     );
   }

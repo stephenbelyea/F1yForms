@@ -92,6 +92,17 @@
   background: #efefef;
 }
 
+.f1y-form--simple .f1y-field__input:focus,
+.f1y-form--simple .f1y-field__input--radio:focus {
+  border-color: navy;
+}
+
+.f1y-form--simple .f1y-field__input:focus + .f1y-field__label,
+.f1y-form--simple .f1y-field__input--radio:focus + .f1y-field__label--radio {
+  color: navy;
+  text-decoration: underline;
+}
+
 .f1y-form--simple .f1y-field__input[aria-invalid=true],
 .f1y-form--simple .f1y-field__input[aria-invalid=true] + .f1y-field__label,
 .f1y-form--simple .f1y-field__error {
@@ -100,4 +111,30 @@
 
 .f1y-form--simple .f1y-field__input[aria-invalid=true] {
   border-color: crimson;
+}
+
+.f1y-form--simple .f1y-submit {
+  margin: 2.5rem 0 1rem;
+  text-align: right;
+}
+
+.f1y-form--simple .f1y-submit .f1y-submit__action {
+  padding: .75rem 1.5rem;
+  margin: 0;
+  border-radius: .2rem;
+  font-size: 1.15rem;
+  font-family: inherit;
+  color: #fff;
+  background: royalblue;
+  border: solid .1rem royalblue;
+  cursor: pointer;
+  transition: background .2s,
+              border .2s;
+}
+
+.f1y-form--simple .f1y-submit .f1y-submit__action:hover,
+.f1y-form--simple .f1y-submit .f1y-submit__action:focus {
+  background: navy;
+  border-color: navy;
+  text-decoration: underline;
 }

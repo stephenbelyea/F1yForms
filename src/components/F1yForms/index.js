@@ -244,6 +244,23 @@ const F1yRadio = ({
   </div>
 )
 
+const F1ySubmit = ({
+  label = defaultRequired('F1yRadio', 'label'),
+  submit = defaultFunc,
+  disabled = defaultBool
+}) => (
+  <div className="f1y-submit">
+    <button 
+      className="f1y-submit__action"
+      type="submit"
+      disabled={disabled}
+      onClick={submit}
+    >
+      {label}
+    </button>
+  </div>
+)
+
 export {
   F1yForm,
   F1yFieldset,
@@ -251,5 +268,6 @@ export {
   F1yTextArea,
   F1ySelect,
   F1ySelectOption,
-  F1yRadio
+  F1yRadio,
+  F1ySubmit
 }

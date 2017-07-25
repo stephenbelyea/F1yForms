@@ -24,3 +24,7 @@ body {
 .row--halves > div {
   width: 47.5%;
 }
+
+.success {
+  color: forestgreen;
+}
