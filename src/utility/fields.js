@@ -21,5 +21,11 @@ export const demoFields = {
   city: '',
   province: '',
   residence: '',
+  amenities: [],
   instructions: ''
+}
+
+export const demoErrors = {
+  ...demoFields, 
+  amenities: ''
 }

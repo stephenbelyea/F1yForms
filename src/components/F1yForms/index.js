@@ -244,6 +244,49 @@ const F1yRadio = ({
   </div>
 )
 
+const F1yCheckbox = ({
+  label = defaultRequired('F1yCheckbox', 'label'),
+  name = defaultRequired('F1yCheckbox', 'name'),
+  id = defaultRequired('F1yCheckbox', 'id'),
+  change = defaultFunc,
+  focus = defaultFunc,
+  blur = defaultFunc,
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  required = defaultBool,
+  disabled = defaultBool,
+  checked = defaultBool
+}) => (
+  <div className={`f1y-field f1y-field--checkbox`}>
+    <div className="f1y-field__wrap--checkbox">
+      <input 
+        id={id}
+        type="checkbox"
+        name={name}
+        value={value}
+        className="f1y-field__input--checkbox"
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        aria-invalid={error === '' ? false : true}
+        disabled={disabled}
+        checked={checked}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      />
+      <label 
+        htmlFor={id}
+        className="f1y-field__label--checkbox"
+      >
+        {label}
+      </label>
+    </div>
+    {showDescription(id, error, 'error')}
+    {showDescription(id, description)}
+  </div>
+)
+
 const F1ySubmit = ({
   label = defaultRequired('F1yRadio', 'label'),
   submit = defaultFunc,
@@ -269,5 +312,6 @@ export {
   F1ySelect,
   F1ySelectOption,
   F1yRadio,
+  F1yCheckbox,
   F1ySubmit
 }

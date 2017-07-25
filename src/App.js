@@ -8,6 +8,7 @@ import {
     F1ySelect,
     F1ySelectOption,
     F1yRadio,
+    F1yCheckbox,
     F1ySubmit 
   } from './components/F1yForms/'
 import * as fields from './utility/fields'
@@ -19,7 +20,7 @@ class App extends Component {
     autoBind(this)
     this.state = {
       values: {...fields.demoFields},
-      errors: {...fields.demoFields},
+      errors: {...fields.demoErrors},
       display: 'form'
     }
   }
@@ -43,9 +44,14 @@ class App extends Component {
     const values = {...this.state.values},
           tar = e.currentTarget
 
-    let key = tar.id
-    if (tar.type && tar.type === 'radio') key = tar.name
-    values[key] = tar.value
+    const key = (tar.type === 'radio' || tar.type === 'checkbox') ? tar.name : tar.id
+
+    if (tar.type === 'checkbox') {
+      const index = values[key].indexOf(tar.value);
+      if (index > -1) values[key].splice(index, 1)
+      else values[key].push(tar.value)
+    }
+    else values[key] = tar.value
 
     // Update value in state, then send to validation
     this.setState({ values }, () => this._validateField(tar))
@@ -62,7 +68,7 @@ class App extends Component {
     this.setState({
       display: 'success',
       values: {...fields.demoFields},
-      errors: {...fields.demoFields}
+      errors: {...fields.demoErrors}
     });
   }
 
@@ -188,6 +194,46 @@ class App extends Component {
                 change={this._onChangeField}
                 blur={this._onBlurField}
                 checked={values.residence === 'house'}
+              />
+            </F1yFieldset>
+            <F1yFieldset 
+              legend="Amenities included"
+            >
+              <F1yCheckbox
+                id="amenities-laundry"
+                name="amenities"
+                label="Laundry"
+                value="laundry"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.amenities.indexOf('laundry') > -1}
+              />
+              <F1yCheckbox
+                id="amenities-pets"
+                name="amenities"
+                label="Pets allowed"
+                value="pets"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.amenities.indexOf('pets') > -1}
+              />
+              <F1yCheckbox
+                id="amenities-parking"
+                name="amenities"
+                label="Parking"
+                value="parking"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.amenities.indexOf('parking') > -1}
+              />
+              <F1yCheckbox
+                id="amenities-balcony"
+                name="amenities"
+                label="Balcony"
+                value="balcony"
+                change={this._onChangeField}
+                blur={this._onBlurField}
+                checked={values.amenities.indexOf('balcony') > -1}
               />
             </F1yFieldset>
             <F1yTextArea 

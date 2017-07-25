@@ -28,7 +28,8 @@
   margin: .5rem 0 1rem;
 }
 
-.f1y-form--simple .f1y-field--radio {
+.f1y-form--simple .f1y-field--radio,
+.f1y-form--simple .f1y-field--checkbox {
   margin: .75rem 1.5rem .75rem 0;
   display: inline-block;
 }
@@ -39,7 +40,8 @@
   flex-direction: column-reverse;
 }
 
-.f1y-form--simple .f1y-field__wrap--radio {
+.f1y-form--simple .f1y-field__wrap--radio,
+.f1y-form--simple .f1y-field__wrap--checkbox {
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
@@ -63,7 +65,8 @@
   height: 2.5rem;
 }
 
-.f1y-form--simple .f1y-field__input--radio {
+.f1y-form--simple .f1y-field__input--radio,
+.f1y-form--simple .f1y-field__input--checkbox {
   margin: 0 .5rem 0 0;
 }
 
@@ -93,12 +96,14 @@
 }
 
 .f1y-form--simple .f1y-field__input:focus,
-.f1y-form--simple .f1y-field__input--radio:focus {
+.f1y-form--simple .f1y-field__input--radio:focus,
+.f1y-form--simple .f1y-field__input--checkbox:focus {
   border-color: navy;
 }
 
 .f1y-form--simple .f1y-field__input:focus + .f1y-field__label,
-.f1y-form--simple .f1y-field__input--radio:focus + .f1y-field__label--radio {
+.f1y-form--simple .f1y-field__input--radio:focus + .f1y-field__label--radio,
+.f1y-form--simple .f1y-field__input--checkbox:focus + .f1y-field__label--checkbox {
   color: navy;
   text-decoration: underline;
 }
