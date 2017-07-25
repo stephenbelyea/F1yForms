@@ -25,50 +25,59 @@ const provinceOptions = [
   { id: 12, value: 'YU', label: 'Yukon' }
 ]
 
+const demoFields = {
+  fname: '',
+  lname: '',
+  email: '',
+  phone: '',
+  city: '',
+  province: '',
+  residence: '',
+  instructions: ''
+}
+
 class App extends Component {
 
   constructor() {
     super()
     autoBind(this)
     this.state = {
-      values: {
-        fname: '',
-        lname: '',
-        email: '',
-        phone: '',
-        city: '',
-        province: '',
-        residence: '',
-        instructions: ''
-      },
-      errors: {
-        fname: '',
-        lname: '',
-        email: '',
-        phone: '',
-        city: '',
-        province: '',
-        residence: '',
-        instructions: ''
-      }
+      values: {...demoFields},
+      errors: {...demoFields}
     }
   }
 
+  // Individual field value validation
+  _validateField(tar) {
+    if (!tar) return false
+    const field = this.state.values[tar.id]
+    const errors = {...this.state.errors, [tar.id]: ''}
+
+    // Blanket check for value on requred field
+    if (tar.getAttribute('aria-required')) {
+      if (field === '') errors[tar.id] = 'Field is required!'
+    }
+
+    this.setState({ errors })
+  }
+
+  // Field value updates
   _onChangeField(e) {
-    const values = { ...this.state.values },
-          errors = { ...this.state.errors },
+    const values = {...this.state.values},
           tar = e.currentTarget
 
     let key = tar.id
     if (tar.type && tar.type === 'radio') key = tar.name
     values[key] = tar.value
 
-    if (tar.getAttribute('aria-required')) {
-      if (tar.value !== '') errors[key] = ''
-      else errors[key] = 'Field is required!'
-    }
+    // Update value in state, then send to validation
+    this.setState({ values }, () => this._validateField(tar))
+  }
 
-    this.setState({ values, errors })
+  // Handle field blur with send through validation
+  _onBlurField(e) {
+    const tar = e.currentTarget
+    this._validateField(tar)
   }
 
   render() {
@@ -91,6 +100,7 @@ class App extends Component {
                 id="fname"
                 label="First*"
                 change={this._onChangeField}
+                blur={this._onBlurField}
                 value={values.fname}
                 error={errors.fname}
                 required={true}
@@ -99,6 +109,7 @@ class App extends Component {
                 id="lname"
                 label="Last*"
                 change={this._onChangeField}
+                blur={this._onBlurField}
                 value={values.lname}
                 error={errors.lname}
                 required={true}
@@ -111,6 +122,7 @@ class App extends Component {
               type="email"
               label="Email*"
               change={this._onChangeField}
+              blur={this._onBlurField}
               value={values.email}
               error={errors.email}
               required={true}
@@ -120,6 +132,7 @@ class App extends Component {
               type="tel"
               label="Phone"
               change={this._onChangeField}
+              blur={this._onBlurField}
               value={values.phone}
               description="Format (555) 123-4567"
             />
@@ -129,18 +142,22 @@ class App extends Component {
               id="city"
               label="City"
               change={this._onChangeField}
+              blur={this._onBlurField}
               value={values.city}
             />
             <F1ySelect 
               id="province"
               label="Province*"
               change={this._onChangeField}
+              blur={this._onBlurField}
               value={values.province}
               error={errors.province}
               required={true}
             >
               <F1ySelectOption 
                 label="Select your province"
+                change={this._onChangeField}
+                selected={values.province}
               />
               {provinceOptions.length > 0 && provinceOptions.map(prov => {
                 return (
@@ -162,6 +179,7 @@ class App extends Component {
               label="Apartment"
               value="apartment"
               change={this._onChangeField}
+              blur={this._onBlurField}
               checked={values.residence === 'apartment'}
             />
             <F1yRadio
@@ -170,6 +188,7 @@ class App extends Component {
               label="Condo"
               value="condo"
               change={this._onChangeField}
+              blur={this._onBlurField}
               checked={values.residence === 'condo'}
             />
             <F1yRadio
@@ -178,6 +197,7 @@ class App extends Component {
               label="House"
               value="house"
               change={this._onChangeField}
+              blur={this._onBlurField}
               checked={values.residence === 'house'}
             />
           </F1yFieldset>
@@ -185,6 +205,7 @@ class App extends Component {
             id="instructions"
             label="Special Instructions"
             change={this._onChangeField}
+            blur={this._onBlurField}
             value={values.instructions}
           />
         </F1yForm>
