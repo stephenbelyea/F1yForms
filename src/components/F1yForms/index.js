@@ -1,6 +1,5 @@
 import React from 'react'
 import './f1yforms-simple.css'
-import './f1yforms-slick.css'
 
 
 const defaultStr = '',

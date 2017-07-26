@@ -83,10 +83,7 @@ class App extends Component {
           <p className="success">Form successfully submitted!</p>
         }
         {display === 'form' &&
-          <F1yForm
-            submit={this._onSubmitForm}
-            styling="simple"
-          >
+          <F1yForm submit={this._onSubmitForm}>
             <F1yFieldset legend="Your Name">
               <div className="row row--halves">
                 {fields.nameFields.map((field, index) => {
