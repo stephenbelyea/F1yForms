@@ -85,51 +85,45 @@ class App extends Component {
         {display === 'form' &&
           <F1yForm
             submit={this._onSubmitForm}
+            styling="simple"
           >
-            <F1yFieldset 
-              legend="Your Name"
-            >
+            <F1yFieldset legend="Your Name">
               <div className="row row--halves">
-                <F1yField 
-                  id="fname"
-                  label="First*"
-                  change={this._onChangeField}
-                  blur={this._onBlurField}
-                  value={values.fname}
-                  error={errors.fname}
-                  required={true}
-                />
-                <F1yField 
-                  id="lname"
-                  label="Last*"
-                  change={this._onChangeField}
-                  blur={this._onBlurField}
-                  value={values.lname}
-                  error={errors.lname}
-                  required={true}
-                />
+                {fields.nameFields.map((field, index) => {
+                  return (
+                    <F1yField 
+                      key={index}
+                      id={field.id}
+                      type={field.type}
+                      label={field.label}
+                      change={this._onChangeField}
+                      blur={this._onBlurField}
+                      value={values[field.id]}
+                      error={errors[field.id]}
+                      description={field.desc}
+                      required={field.required}
+                    />
+                  )
+                })}
               </div>
             </F1yFieldset>
             <div className="row row--halves">
-              <F1yField 
-                id="email"
-                type="email"
-                label="Email*"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                value={values.email}
-                error={errors.email}
-                required={true}
-              />
-              <F1yField 
-                id="phone"
-                type="tel"
-                label="Phone"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                value={values.phone}
-                description="Format (555) 123-4567"
-              />
+              {fields.contactFields.map((field, index) => {
+                return (
+                  <F1yField 
+                    key={index}
+                    id={field.id}
+                    type={field.type}
+                    label={field.label}
+                    change={this._onChangeField}
+                    blur={this._onBlurField}
+                    value={values[field.id]}
+                    error={errors[field.id]}
+                    description={field.desc}
+                    required={field.required}
+                  />
+                )
+              })}
             </div>
             <div className="row row--halves">
               <F1yField 
@@ -154,10 +148,10 @@ class App extends Component {
                   blur={this._onBlurField}
                   selected={values.province}
                 />
-                {fields.provinceOptions.map(prov => {
+                {fields.provinceOptions.map((prov, index) => {
                   return (
                     <F1ySelectOption 
-                      key={prov.id}
+                      key={index}
                       label={prov.label}
                       value={prov.value}
                     />
@@ -165,76 +159,37 @@ class App extends Component {
                 })}
               </F1ySelect>
             </div>
-            <F1yFieldset 
-              legend="Type of residence"
-            >
-              <F1yRadio
-                id="residence-apartment"
-                name="residence"
-                label="Apartment"
-                value="apartment"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.residence === 'apartment'}
-              />
-              <F1yRadio
-                id="residence-condo"
-                name="residence"
-                label="Condo"
-                value="condo"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.residence === 'condo'}
-              />
-              <F1yRadio
-                id="residence-house"
-                name="residence"
-                label="House"
-                value="house"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.residence === 'house'}
-              />
+            <F1yFieldset legend="Type of residence">
+              {fields.residenceOptions.map((res, index) => {
+                return (
+                  <F1yRadio
+                    key={index}
+                    id={`residence-${res.value}`}
+                    name="residence"
+                    label={res.label}
+                    value={res.value}
+                    change={this._onChangeField}
+                    blur={this._onBlurField}
+                    checked={values.residence === res.value}
+                  />
+                )
+              })}
             </F1yFieldset>
-            <F1yFieldset 
-              legend="Amenities included"
-            >
-              <F1yCheckbox
-                id="amenities-laundry"
-                name="amenities"
-                label="Laundry"
-                value="laundry"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.amenities.indexOf('laundry') > -1}
-              />
-              <F1yCheckbox
-                id="amenities-pets"
-                name="amenities"
-                label="Pets allowed"
-                value="pets"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.amenities.indexOf('pets') > -1}
-              />
-              <F1yCheckbox
-                id="amenities-parking"
-                name="amenities"
-                label="Parking"
-                value="parking"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.amenities.indexOf('parking') > -1}
-              />
-              <F1yCheckbox
-                id="amenities-balcony"
-                name="amenities"
-                label="Balcony"
-                value="balcony"
-                change={this._onChangeField}
-                blur={this._onBlurField}
-                checked={values.amenities.indexOf('balcony') > -1}
-              />
+            <F1yFieldset legend="Amenities included">
+              {fields.amenityOptions.map((amenity, index) => {
+                return (
+                  <F1yCheckbox
+                    key={index}
+                    id={`amenity-${amenity.value}`}
+                    name="amenity"
+                    label={amenity.label}
+                    value={amenity.value}
+                    change={this._onChangeField}
+                    blur={this._onBlurField}
+                    checked={values.amenities.indexOf(amenity.value) > -1}
+                  />
+                )
+              })}
             </F1yFieldset>
             <F1yTextArea 
               id="instructions"

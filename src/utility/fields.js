@@ -1,16 +1,39 @@
+export const nameFields = [
+  { id: 'fname', type: 'text', label: 'First*', desc: '', required: true },
+  { id: 'lname', type: 'text', label: 'Last*', desc: '', required: true }
+]
+
+export const contactFields = [
+  { id: 'email', type: 'email', label: 'Email*', desc: '', required: true },
+  { id: 'phone', type: 'tel', label: 'Phone', desc: 'Format (555) 123-4567', required: false }
+]
+
 export const provinceOptions = [
-  { id: 1, value: 'AB', label: 'Alberta' },
-  { id: 2, value: 'BC', label: 'British Columbia' },
-  { id: 3, value: 'MB', label: 'Manitoba' },
-  { id: 4, value: 'NB', label: 'New Brunswick' },
-  { id: 5, value: 'NL', label: 'Newfoundland and Labrador' },
-  { id: 6, value: 'NW', label: 'Northwest Territories' },
-  { id: 7, value: 'NS', label: 'Nova Scotia' },
-  { id: 8, value: 'NU', label: 'Nunavut' },
-  { id: 9, value: 'ON', label: 'Ontario' },
-  { id: 10, value: 'SK', label: 'Saskatchewan' },
-  { id: 11, value: 'QC', label: 'Quebec' },
-  { id: 12, value: 'YU', label: 'Yukon' }
+  { value: 'AB', label: 'Alberta' },
+  { value: 'BC', label: 'British Columbia' },
+  { value: 'MB', label: 'Manitoba' },
+  { value: 'NB', label: 'New Brunswick' },
+  { value: 'NL', label: 'Newfoundland and Labrador' },
+  { value: 'NW', label: 'Northwest Territories' },
+  { value: 'NS', label: 'Nova Scotia' },
+  { value: 'NU', label: 'Nunavut' },
+  { value: 'ON', label: 'Ontario' },
+  { value: 'SK', label: 'Saskatchewan' },
+  { value: 'QC', label: 'Quebec' },
+  { value: 'YU', label: 'Yukon' }
+]
+
+export const residenceOptions = [
+  { value: 'apartment', label: 'Apartment' },
+  { value: 'condo', label: 'Condo' },
+  { value: 'house', label: 'House' }
+]
+
+export const amenityOptions = [
+  { value: 'pets', label: 'Pets Allowed' },
+  { value: 'laundry', label: 'In-Suite Laundry' },
+  { value: 'parking', label: 'Parking' },
+  { value: 'balcony', label: 'Balcony' }
 ]
 
 export const demoFields = {
