@@ -1,10 +1,10 @@
-.f1y-form--simple {
+.f1y-form {
   border: solid .1rem #dedede;
   border-radius: .25rem;
   padding: .75rem 2rem 1rem;
 }
 
-.f1y-form--simple .f1y-fieldset {
+.f1y-form .f1y-fieldset {
   border-left: none;
   border-right: none;
   border-top: solid .1rem #dedede;
@@ -13,46 +13,46 @@
   margin: .5rem 0 1rem;
 }
 
-.f1y-form--simple .f1y-fieldset:not(first-of-type){
+.f1y-form .f1y-fieldset:not(first-of-type){
   margin-top: 1.5rem;
 }
 
-.f1y-form--simple .f1y-fieldset__legend {
+.f1y-form .f1y-fieldset__legend {
   font-size: .825rem;
   text-transform: uppercase;
   margin: 0 0 .25rem;
   padding-right: .75rem;
 }
 
-.f1y-form--simple .f1y-field {
+.f1y-form .f1y-field {
   margin: .5rem 0 1rem;
 }
 
-.f1y-form--simple .f1y-field--radio,
-.f1y-form--simple .f1y-field--checkbox {
+.f1y-form .f1y-field--radio,
+.f1y-form .f1y-field--checkbox {
   margin: .75rem 1.5rem .75rem 0;
   display: inline-block;
 }
 
-.f1y-form--simple .f1y-field__wrap {
+.f1y-form .f1y-field__wrap {
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
 }
 
-.f1y-form--simple .f1y-field__wrap--radio,
-.f1y-form--simple .f1y-field__wrap--checkbox {
+.f1y-form .f1y-field__wrap--radio,
+.f1y-form .f1y-field__wrap--checkbox {
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
 }
 
-.f1y-form--simple .f1y-field__wrap > * {
+.f1y-form .f1y-field__wrap > * {
   flex: 1 1 100%;
   display: block;
 }
 
-.f1y-form--simple .f1y-field__input {
+.f1y-form .f1y-field__input {
   border: solid .1rem #acacac;
   border-radius: .2rem;
   background: #fff;
@@ -61,69 +61,69 @@
   font-size: inherit;
 }
 
-.f1y-form--simple .f1y-field--select .f1y-field__input {
+.f1y-form .f1y-field--select .f1y-field__input {
   height: 2.5rem;
 }
 
-.f1y-form--simple .f1y-field__input--radio,
-.f1y-form--simple .f1y-field__input--checkbox {
+.f1y-form .f1y-field__input--radio,
+.f1y-form .f1y-field__input--checkbox {
   margin: 0 .5rem 0 0;
 }
 
-.f1y-form--simple .f1y-field__label {
+.f1y-form .f1y-field__label {
   margin: 0 0 .25rem;
 }
 
-.f1y-form--simple .f1y-field__description,
-.f1y-form--simple .f1y-field__error {
+.f1y-form .f1y-field__description,
+.f1y-form .f1y-field__error {
   display: block;
   margin: .275rem 0 0;
   font-size: .825rem;
 }
 
-.f1y-form--simple .f1y-field__description {
+.f1y-form .f1y-field__description {
   opacity: .675;
 }
 
-.f1y-form--simple .f1y-field__input:disabled,
-.f1y-form--simple .f1y-field__input:disabled + .f1y-field__label {
+.f1y-form .f1y-field__input:disabled,
+.f1y-form .f1y-field__input:disabled + .f1y-field__label {
   cursor: not-allowed;
   opacity: .5;
 }
 
-.f1y-form--simple .f1y-field__input:disabled {
+.f1y-form .f1y-field__input:disabled {
   background: #efefef;
 }
 
-.f1y-form--simple .f1y-field__input:focus,
-.f1y-form--simple .f1y-field__input--radio:focus,
-.f1y-form--simple .f1y-field__input--checkbox:focus {
+.f1y-form .f1y-field__input:focus,
+.f1y-form .f1y-field__input--radio:focus,
+.f1y-form .f1y-field__input--checkbox:focus {
   border-color: navy;
 }
 
-.f1y-form--simple .f1y-field__input:focus + .f1y-field__label,
-.f1y-form--simple .f1y-field__input--radio:focus + .f1y-field__label--radio,
-.f1y-form--simple .f1y-field__input--checkbox:focus + .f1y-field__label--checkbox {
+.f1y-form .f1y-field__input:focus + .f1y-field__label,
+.f1y-form .f1y-field__input--radio:focus + .f1y-field__label--radio,
+.f1y-form .f1y-field__input--checkbox:focus + .f1y-field__label--checkbox {
   color: navy;
   text-decoration: underline;
 }
 
-.f1y-form--simple .f1y-field__input[aria-invalid=true],
-.f1y-form--simple .f1y-field__input[aria-invalid=true] + .f1y-field__label,
-.f1y-form--simple .f1y-field__error {
+.f1y-form .f1y-field__input[aria-invalid=true],
+.f1y-form .f1y-field__input[aria-invalid=true] + .f1y-field__label,
+.f1y-form .f1y-field__error {
   color: crimson;
 }
 
-.f1y-form--simple .f1y-field__input[aria-invalid=true] {
+.f1y-form .f1y-field__input[aria-invalid=true] {
   border-color: crimson;
 }
 
-.f1y-form--simple .f1y-submit {
+.f1y-form .f1y-submit {
   margin: 2.5rem 0 1rem;
   text-align: right;
 }
 
-.f1y-form--simple .f1y-submit .f1y-submit__action {
+.f1y-form .f1y-submit .f1y-submit__action {
   padding: .75rem 1.5rem;
   margin: 0;
   border-radius: .2rem;
@@ -137,8 +137,8 @@
               border .2s;
 }
 
-.f1y-form--simple .f1y-submit .f1y-submit__action:hover,
-.f1y-form--simple .f1y-submit .f1y-submit__action:focus {
+.f1y-form .f1y-submit .f1y-submit__action:hover,
+.f1y-form .f1y-submit .f1y-submit__action:focus {
   background: navy;
   border-color: navy;
   text-decoration: underline;
