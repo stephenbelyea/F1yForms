@@ -36,6 +36,18 @@ export const amenityOptions = [
   { value: 'balcony', label: 'Balcony' }
 ]
 
+export const confirmLabel = 
+  'Yes, I\'d love to get spammed with a bunch of marketing emails for months because of this form that I had complete forgotten about mere seconds after filling it out!'
+
+export const monthOptions = [
+  'January', 'February', 'March', 'April', 'May', 'June', 'July', 
+  'August', 'September', 'October', 'November', 'December'
+]
+
+let day = []
+for (let d = 1; d <= 31; d++) day.push(d)
+export const dayOptions = day
+
 export const demoFields = {
   fname: '',
   lname: '',
@@ -45,10 +57,18 @@ export const demoFields = {
   province: '',
   residence: '',
   amenities: [],
-  instructions: ''
+  instructions: '',
+  birthyear: 2017,
+  birthmonth: 0,
+  birthday: 1,
+  confirm: false
 }
 
 export const demoErrors = {
   ...demoFields, 
-  amenities: ''
+  amenities: '',
+  birthyear: '',
+  birthmonth: '',
+  birthday: '',
+  confirm: ''
 }

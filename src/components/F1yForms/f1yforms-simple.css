@@ -29,7 +29,8 @@
 }
 
 .f1y-form .f1y-field--radio,
-.f1y-form .f1y-field--checkbox {
+.f1y-form .f1y-field--checkbox,
+.f1y-form .f1y-field--confirm {
   margin: .75rem 1.5rem .75rem 0;
   display: inline-block;
 }
@@ -45,6 +46,12 @@
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
+}
+
+.f1y-form .f1y-field__wrap--confirm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .f1y-form .f1y-field__wrap > * {
@@ -66,12 +73,24 @@
 }
 
 .f1y-form .f1y-field__input--radio,
-.f1y-form .f1y-field__input--checkbox {
+.f1y-form .f1y-field__input--checkbox,
+.f1y-form .f1y-field__input--confirm {
   margin: 0 .5rem 0 0;
+}
+
+.f1y-form .f1y-field__input--confirm {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .f1y-form .f1y-field__label {
   margin: 0 0 .25rem;
+}
+
+.f1y-form .f1y-field__label--confirm {
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: .825rem;
 }
 
 .f1y-form .f1y-field__description,

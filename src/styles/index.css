@@ -25,6 +25,14 @@ body {
   width: 47.5%;
 }
 
+.row--start {
+  justify-content: flex-start;
+}
+
+.row--start > div {
+  margin-right: 1.5rem !important;
+}
+
 .success {
   color: forestgreen;
 }

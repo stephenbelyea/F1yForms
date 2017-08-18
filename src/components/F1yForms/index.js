@@ -79,7 +79,7 @@ const F1yField = ({
   required = defaultBool,
   disabled = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--basic`}>
+  <div className="f1y-field f1y-field--basic">
     <div className="f1y-field__wrap">
       <input 
         id={id}
@@ -118,7 +118,7 @@ const F1yTextArea = ({
   required = defaultBool,
   disabled = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--textarea`}>
+  <div className="f1y-field f1y-field--textarea">
     <div className="f1y-field__wrap">
       <textarea 
         id={id}
@@ -158,7 +158,7 @@ const F1ySelect = ({
   disabled = defaultBool,
   children
 }) => (
-  <div className={`f1y-field f1y-field--select`}>
+  <div className="f1y-field f1y-field--select">
     <div className="f1y-field__wrap">
       <select 
         id={id}
@@ -214,7 +214,7 @@ const F1yRadio = ({
   disabled = defaultBool,
   checked = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--radio`}>
+  <div className="f1y-field f1y-field--radio">
     <div className="f1y-field__wrap--radio">
       <input 
         id={id}
@@ -257,7 +257,7 @@ const F1yCheckbox = ({
   disabled = defaultBool,
   checked = defaultBool
 }) => (
-  <div className={`f1y-field f1y-field--checkbox`}>
+  <div className="f1y-field f1y-field--checkbox">
     <div className="f1y-field__wrap--checkbox">
       <input 
         id={id}
@@ -277,6 +277,47 @@ const F1yCheckbox = ({
       <label 
         htmlFor={id}
         className="f1y-field__label--checkbox"
+      >
+        {label}
+      </label>
+    </div>
+    {showDescription(id, error, 'error')}
+    {showDescription(id, description)}
+  </div>
+)
+
+const F1yConfirm = ({
+  label = defaultRequired('F1yConfirm', 'label'),
+  id = defaultRequired('F1yConfirm', 'id'),
+  change = defaultFunc,
+  focus = defaultFunc,
+  blur = defaultFunc,
+  value = defaultStr,
+  description = defaultStr,
+  error = defaultStr,
+  required = defaultBool,
+  disabled = defaultBool
+}) => (
+  <div className="f1y-field f1y-field--confirm">
+    <div className="f1y-field__wrap--confirm">
+      <input 
+        id={id}
+        type="checkbox"
+        name={id}
+        value={value}
+        className="f1y-field__input--confirm"
+        aria-describedby={describedBy(id, description, error)}
+        aria-required={required}
+        aria-invalid={error === '' ? false : true}
+        disabled={disabled}
+        checked={value}
+        onChange={change}
+        onFocus={focus}
+        onBlur={blur}
+      />
+      <label 
+        htmlFor={id}
+        className="f1y-field__label--confirm"
       >
         {label}
       </label>
@@ -312,5 +353,6 @@ export {
   F1ySelectOption,
   F1yRadio,
   F1yCheckbox,
+  F1yConfirm,
   F1ySubmit
 }

@@ -9,6 +9,7 @@ import {
     F1ySelectOption,
     F1yRadio,
     F1yCheckbox,
+    F1yConfirm,
     F1ySubmit 
   } from './components/F1yForms/'
 import * as fields from './utility/fields'
@@ -46,8 +47,9 @@ class App extends Component {
 
     const key = (tar.type === 'radio' || tar.type === 'checkbox') ? tar.name : tar.id
 
-    if (tar.type === 'checkbox') {
-      const index = values[key].indexOf(tar.value);
+    if (tar.id === 'confirm') values[key] = !values[key]
+    else if (tar.type === 'checkbox') {
+      const index = values[key].indexOf(tar.value)
       if (index > -1) values[key].splice(index, 1)
       else values[key].push(tar.value)
     }
@@ -194,6 +196,58 @@ class App extends Component {
               change={this._onChangeField}
               blur={this._onBlurField}
               value={values.instructions}
+            />
+            <F1yFieldset legend="Your Birthday">
+              <div className="row row--start">
+                <F1yField 
+                  id="birthyear"
+                  label="Full Year"
+                  type="number"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  value={values.birthyear}
+                />
+                <F1ySelect 
+                  id="birthmonth"
+                  label="Month"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  value={values.birthmonth}
+                >
+                  {fields.monthOptions.map((month, index) => {
+                    return (
+                      <F1ySelectOption 
+                        key={index}
+                        label={month}
+                        value={index}
+                      />
+                    );
+                  })}
+                </F1ySelect>
+                <F1ySelect 
+                  id="birthday"
+                  label="Day"
+                  change={this._onChangeField}
+                  blur={this._onBlurField}
+                  value={values.birthday}
+                >
+                  {fields.dayOptions.map((day, index) => {
+                    return (
+                      <F1ySelectOption 
+                        key={index}
+                        label={day}
+                        value={day}
+                      />
+                    );
+                  })}
+                </F1ySelect>
+              </div>
+            </F1yFieldset>
+            <F1yConfirm
+              id="confirm"
+              label={fields.confirmLabel}
+              value={values.confirm}
+              change={this._onChangeField}
             />
             <F1ySubmit 
               label="Register"
